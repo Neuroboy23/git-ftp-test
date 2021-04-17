@@ -1,0 +1,23 @@
+name: Deploy to theinformation.net
+
+on:
+
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: s51860.gridserver.com
+          username: gunter@theinformation.net
+          password: ${{ secrets.FTP_PASSWORD }}
